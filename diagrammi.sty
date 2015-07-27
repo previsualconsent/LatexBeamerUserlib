@@ -1,0 +1,449 @@
+\def\fileversion{v1.0f}
+\def\filedate{2009/12/07}
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{diagrammi}
+%\usepackage[smaller,printonlyused]{acronym}    % per la creazione dell'elenco degli acronimi
+
+\tikzset{
+  % >=stealth', %%  Uncomment for more conventional arrows
+  boson/.style={decorate, decoration={snake,amplitude=4pt,segment length=5pt}, thick},
+  vector/.style={decorate, decoration={snake,amplitude=1.5pt,segment length=3pt}, draw},
+  bigvector/.style={decorate, decoration={snake,amplitude=4pt}, draw},
+  provector/.style={decorate, decoration={snake,amplitude=2.5pt}, draw},
+  antivector/.style={decorate, decoration={snake,amplitude=-2.5pt}, draw},
+  fermion/.style={draw=black, postaction={decorate},
+    decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+  fermionbar/.style={draw=black, postaction={decorate},
+    decoration={markings,mark=at position .55 with {\arrow[draw=black]{<}}}},
+  fermionnoarrow/.style={draw=black},
+  gluon/.style={decorate, draw=black,
+    decoration={coil,amplitude=4pt, segment length=5pt}},
+  scalar/.style={dashed,draw=black, postaction={decorate},
+    decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+  scalarbar/.style={dashed,draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{<}}}},
+  scalarnoarrow/.style={dashed,draw=black},
+%
+%
+  electron/.style={draw=black, postaction={decorate},
+    decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+  photon/.style={decorate, decoration={snake}, draw=npurple,very thick},
+  higgs/.style={dashed, draw=black, thick},
+  blob/.style={pattern=north east lines},
+}
+
+%\tikzset{
+%%   electron/.style={draw=jblue,very thick, postaction={decorate},
+%%     decoration={markings,mark=at position .55 with {\arrow[draw=jblue]{>}}}
+%%   },
+%  electron2/.style={draw=jblue,very thick, postaction={decorate},
+%    decoration={markings,mark=at position .55 with {\arrow[draw=jblue]{<}}}
+%  },
+%  gluon/.style={decorate, draw=korange,very thick, %kred
+%    decoration={coil,amplitude=4pt, segment length=6pt}},
+  %%   higgs/.style={draw=wred,very thick, postaction={decorate},
+  %%     decoration={markings,mark=at position .55 with {\arrow[draw=wred]{>}}}},
+%  nothing/.style={draw=white,very thick}
+%}
+
+
+%\begin{comment}
+%ngli output vengono gestiti da sotto a sopra
+% gli input dei comandi si riferiscono ai quark da sopra a sotto e poi 
+% da sinistra a destra.
+%\end{comment}
+
+%% \newcommand{\Zmumu}{
+%%   \begin{fmfgraph*}(110,50)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%%     \fmf{phantom}{i1,v1,i2}
+%%     \fmf{fermion}{o1,v2,o2} 
+%%     \fmf{boson, tension=1, label=Z, lab.sid=left}{v1,v2}
+%%     \fmflabel{\ensuremath{\mu^+}}{o1} 
+%%     \fmflabel{\ensuremath{\mu^-}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+%% \newcommand{\Wmunu}{
+%%   \begin{fmfgraph*}(110,50)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%%     \fmf{phantom}{i1,v1,i2}
+%%     \fmf{fermion}{o1,v2,o2} 
+%%     \fmf{boson, tension=1, label=W, lab.sid=left}{v1,v2}
+%%     \fmflabel{\ensuremath{\mu}}{o1} 
+%%     \fmflabel{\ensuremath{\nu_\mu}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+
+
+%% \newcommand{\schannelgraphH}[6]{
+%%   \begin{fmfgraph*}(110,80)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%%     \fmf{fermion}{i1,v1,i2}
+%%     \fmf{dashes}{o1,v2}
+%%     \fmf{photon}{v2,o2}
+%%     \fmf{photon,label=\ensuremath{#6}}{v1,v2}
+%%     \fmflabel{\ensuremath{#1}}{i1}
+%%     \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{#3}}{o1} 
+%%     \fmflabel{\ensuremath{#4}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+
+%% \newcommand{\schannelgraph}[6]{
+%%   \begin{fmfgraph*}(110,80)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%% %    \fmf{fermion}{i1,v1} 
+%% %    \fmf{photon, label=#5}{v1,o1}	
+%% %    \fmf{fermion}{i2,v2} 
+%% %    \fmf{photon, label=Z}{v2,o2} 
+%%     \fmf{fermion}{i1,v1,i2}
+%%     \fmf{photon}{o1,v2,o2} 
+%%     \fmf{photon,label=\ensuremath{#6}}{v1,v2}
+%%     \fmflabel{\ensuremath{#1}}{i1}
+%%     \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{#3}}{o1} 
+%%     \fmflabel{\ensuremath{#4}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+%% \newcommand{\tchannelgraph}[6]{
+%%   \begin{fmfgraph*}(110,80) 
+%%     % Note that the size is given in normal parentheses 
+%%     % instead of curly brackets. 
+%%     % Define external vertices from bottom to top 
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%%     \fmflabel{\ensuremath{#1}}{i1}
+%%     \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{#3}}{o1}
+%%     \fmflabel{\ensuremath{#4}}{o2}
+%%     \fmf{fermion}{i1,v1} 
+%%     \fmf{photon}{v1,o1}	
+%%     \fmf{fermion}{v2,i2} 
+%%     \fmf{photon}{v2,o2} 
+%%     \fmf{fermion, label=\ensuremath{#5}}{v1,v2} 
+%%   \end{fmfgraph*} 
+%% }
+
+
+%% \newcommand{\ZbbA}{
+%%   \begin{fmfgraph*}(110,50)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%% %    \fmf{fermion}{i1,v1} 
+%% %    \fmf{photon, label=#5}{v1,o1}	
+%% %    \fmf{fermion}{i2,v2} 
+%% %    \fmf{photon, label=Z}{v2,o2} 
+%%     \fmf{phantom}{i1,v1,i2}
+%%     \fmf{fermion}{o1,v2,o2} 
+%%     \fmf{phantom, tension=1, label=Z, lab.sid=left}{v1,v2}
+%%  %   \fmflabel{\ensuremath{#1}}{i1}
+%%  %   \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{\bar{b}}}{o1} 
+%%     \fmflabel{\ensuremath{b}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+%% \newcommand{\WlnuA}{
+%%   \begin{fmfgraph*}(110,50)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%% %    \fmf{fermion}{i1,v1} 
+%% %    \fmf{photon, label=#5}{v1,o1}	
+%% %    \fmf{fermion}{i2,v2} 
+%% %    \fmf{photon, label=Z}{v2,o2} 
+%%     \fmf{phantom}{i1,v1,i2}
+%%     \fmf{fermion}{o1,v2,o2} 
+%%     \fmf{phantom, tension=1, label=W}{v1,v2}
+%%  %   \fmflabel{\ensuremath{#1}}{i1}
+%%  %   \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{l}}{o1} 
+%%     \fmflabel{\ensuremath{\nu_l}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+
+
+%% \newcommand{\Zbb}{
+%%   \begin{fmfgraph*}(110,80)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%% %    \fmf{fermion}{i1,v1} 
+%% %    \fmf{photon, label=#5}{v1,o1}	
+%% %    \fmf{fermion}{i2,v2} 
+%% %    \fmf{photon, label=Z}{v2,o2} 
+%%     \fmf{phantom}{i1,v1,i2}
+%%     \fmf{fermion}{o1,v2,o2} 
+%%     \fmf{photon,label=Z}{v1,v2}
+%%  %   \fmflabel{\ensuremath{#1}}{i1}
+%%  %   \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{\bar{b}}}{o1} 
+%%     \fmflabel{\ensuremath{b}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+%% \newcommand{\Wlnu}{
+%%   \begin{fmfgraph*}(110,80)
+%%     \fmfleft{i1,i2} 
+%%     \fmfright{o1,o2} 
+%% %    \fmf{fermion}{i1,v1} 
+%% %    \fmf{photon, label=#5}{v1,o1}	
+%% %    \fmf{fermion}{i2,v2} 
+%% %    \fmf{photon, label=Z}{v2,o2} 
+%%     \fmf{phantom}{i1,v1,i2}
+%%     \fmf{fermion}{o1,v2,o2} 
+%%     \fmf{photon,label=W}{v1,v2}
+%%  %   \fmflabel{\ensuremath{#1}}{i1}
+%%  %   \fmflabel{\ensuremath{#2}}{i2} 
+%%     \fmflabel{\ensuremath{l}}{o1} 
+%%     \fmflabel{\ensuremath{\nu_l}}{o2} 
+%%   \end{fmfgraph*} 
+%% }
+
+
+
+%% \newcommand{\treedecayin}[8][80]{
+%%   \begin{fmfgraph*}(110,#1)
+%%     \fmfstraight
+%%     \fmfleft{i0,i1,i2,i3,i4,i5}
+%%     \fmfright{o0,o1,o2,o3,o4,o5}
+%%     \fmf{fermion}{o1,i1}
+%%     \fmf{fermion,tension=1.5}{i4,v2}
+%%     \fmf{fermion}{v2,o4}
+%%     \fmflabel{\ensuremath{#3}}{i1} % input basso
+%%     \fmflabel{\ensuremath{#2}}{i4} % input alto
+%%     \fmflabel{\ensuremath{#5}}{o3} % output alto della coppia
+%%     \fmflabel{\ensuremath{#7}}{o1} % output basso della linea
+%%     \fmflabel{\ensuremath{#4}}{o4} % output alto della linea
+%%     \fmflabel{\ensuremath{#6}}{o2} % output basso della coppia
+%%     \fmffreeze
+%%     \fmf{fermion}{o3,v3,o2}
+%%     \fmf{photon,lab.sid=left,label=\ensuremath{#8},tension=2}{v2,v3}
+%%     \fmf{phantom,tension=1.5}{i1,v3}
+%%   \end{fmfgraph*}
+%% }
+
+%% \newcommand{\treedecayout}[8][80]{
+%%   \begin{fmfgraph*}(110,#1)
+%%     \fmfstraight
+%%     \fmfleft{i0,i1,i2,i3,i4}
+%%     \fmfright{o0,o1,o2,o3,o4}
+%%     \fmf{fermion}{i1,o1}
+%%     \fmf{fermion,tension=1.2}{v2,i2}
+%%     \fmf{fermion}{o2,v2}
+%%     \fmflabel{\ensuremath{#3}}{i1} % input basso
+%%     \fmflabel{\ensuremath{#2}}{i2} % input alto
+%%     \fmflabel{\ensuremath{#5}}{o3} % output alto della coppia
+%%     \fmflabel{\ensuremath{#7}}{o1} % output basso della linea
+%%     \fmflabel{\ensuremath{#4}}{o4} % output alto della linea
+%%     \fmflabel{\ensuremath{#6}}{o2} % output basso della coppia
+%%     \fmffreeze
+%%     \fmf{fermion,tension=4}{o4,v3}
+%%     \fmf{fermion, tension=0.5}{v3,o3}
+%%     \fmf{photon,lab.sid=left,label=\ensuremath{#8},tension=2.5}{v2,v3}
+%%     \fmf{phantom}{i4,v3}
+%%   \end{fmfgraph*}
+%% }
+
+%% \newcommand{\treebariondecayout}[9]{
+%%   \begin{fmfgraph*}(110,70)
+%%     \fmfstraight
+%%     \fmfleft{i0,i1,i2,i3,i4}
+%%     \fmfright{o0,o1,o2,o3,o4}
+%%     \fmf{fermion}{i1,o1}
+%%     \fmf{fermion,tension=1.2}{i2,v2}
+%%     \fmf{fermion}{v2,o2}
+%%     \fmf{fermion}{i0,o0}
+%%     \fmflabel{\ensuremath{#1}}{i2} % input alto
+%%     \fmflabel{\ensuremath{#2}}{i1} % input basso
+%%     \fmflabel{\ensuremath{#4}}{o4}%-(0,.2h)} % output alto della linea    
+%%     \fmflabel{\ensuremath{#5}}{o3} % output alto della coppia
+%%     \fmflabel{\ensuremath{#6}}{o2} % output basso della coppia
+%%     \fmflabel{\ensuremath{#7}}{o1}%+(0,.2h)} % output basso della linea
+%%     \fmflabel{\ensuremath{#8}}{o0} % output basso della coppia
+%%     \fmflabel{\ensuremath{#3}}{i0} % output basso della coppia
+%%     \fmffreeze
+%%     \fmf{fermion,tension=4}{v3,o4}
+%%     \fmf{fermion, tension=0.5}{o3,v3}
+%%     \fmf{photon,lab.sid=left, label=\ensuremath{#9},tension=2.5}{v2,v3}
+%%     \fmf{phantom}{i4,v3}
+%%   \end{fmfgraph*}
+%% }
+
+%% \newcommand{\penguinbariondecayin}[8]{
+%%   \begin{fmfgraph*}(110,60)
+%%     \fmfipair{Vtb,Vts,b,s,ep,em,p,p',ga,gb,tm,bm, au,bu}
+%%     \fmfiequ{tm}{.5[nw,ne]}  %tm and bm Nodes defined for convienence
+%%     \fmfiequ{bm}{.5[sw,se]}  %tm and bm are verticies @ top-middle and bottom-middle
+%%     \fmfiequ{.5[Vtb,Vts]}{.7[bm,tm]}  
+%%     \fmfiequ{Vts}{Vtb+(.2w,0)}
+%%     \fmfiequ{b}{.7[sw,nw]}
+%%     \fmfiequ{s}{.7[se,ne]}
+%%     \fmfiequ{ga}{se-(0,.5h)}
+%%     \fmfiequ{gb}{sw-(0,.5h)} 
+%%     \fmfiequ{p'}{bm}
+%%     \fmfiequ{p}{p'+(0,.3h)}
+%%     \fmfiequ{em}{se+(0,.2h)}
+%%    \fmfiequ{ep}{se-(0,.2h)} 
+%%    \fmfiequ{au}{se-(0,.8h)} 
+%%    \fmfiequ{bu}{sw-(0,.8h)} 
+%%    \fmfi{photon,lab=$W$,
+%%      lab.sid=right}{Vtb--Vts}
+%%    \fmfi{fermion}{b--Vtb}
+%%    \fmfi{fermion}{gb--ga}
+%%    \fmfi{fermion}{Vts--s}
+%%    \fmfi{fermion,lab=$t/c/u$}{p{b-Vtb}
+%%      .. tension 1 .. {right}Vtb}
+%%    \fmfi{fermion,lab=$t/c/u$}{Vts{right}
+%%      .. tension 1 .. p{Vts-s}}
+%%    \fmfi{gluon,label=$g/Z^0/\gamma$ , lab.sid=right }{p--p'}
+%%    \fmfi{fermion}{ep--p'}
+%%    \fmfi{fermion}{p'--em}
+%%    \fmfi{fermion}{bu--au}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#1}}{b}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#4}}{s}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#7}}{ga+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#2}}{gb+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#6}}{ep}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#5}}{em}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#8}}{au}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#3}}{bu}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vtb}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vts}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p'}
+%%  \end{fmfgraph*}
+%% }
+
+%% \newcommand{\penguinbariondecayinplain}[8]{
+%%   \begin{fmfgraph*}(110,60)
+%%     \fmfipair{Vtb,Vts,b,s,ep,em,p,p',ga,gb,tm,bm, au,bu}
+%%     \fmfiequ{tm}{.5[nw,ne]}  %tm and bm Nodes defined for convienence
+%%     \fmfiequ{bm}{.5[sw,se]}  %tm and bm are verticies @ top-middle and bottom-middle
+%%     \fmfiequ{.5[Vtb,Vts]}{.7[bm,tm]}  
+%%     \fmfiequ{Vts}{Vtb+(.2w,0)}
+%%     \fmfiequ{b}{.7[sw,nw]}
+%%     \fmfiequ{s}{.7[se,ne]}
+%%     \fmfiequ{ga}{se-(0,.5h)}
+%%     \fmfiequ{gb}{sw-(0,.5h)} 
+%%     \fmfiequ{p'}{bm}
+%%     \fmfiequ{p}{p'+(0,.3h)}
+%%     \fmfiequ{em}{se+(0,.2h)}
+%%    \fmfiequ{ep}{se-(0,.2h)} 
+%%    \fmfiequ{au}{se-(0,.8h)} 
+%%    \fmfiequ{bu}{sw-(0,.8h)} 
+%%    \fmfi{photon,lab=$W$,
+%%      lab.sid=left}{Vtb--Vts}
+%%    \fmfi{fermion}{b--Vtb}
+%%    \fmfi{fermion}{gb--ga}
+%%    \fmfi{fermion}{Vts--s}
+%%    \fmfi{fermion}{p{b-Vtb}
+%%      .. tension 1 .. Vtb{right}}
+%%    \fmfi{fermion}{Vts{right}
+%%      .. tension 1 .. p{Vts-s}}
+%%    \fmfi{gluon,lab.sid=right }{p--p'}
+%%    \fmfi{fermion}{ep--p'}
+%%    \fmfi{fermion}{p'--em}
+%%    \fmfi{fermion}{bu--au}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#1}}{b}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#4}}{s}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#7}}{ga+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#2}}{gb+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#6}}{ep}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#5}}{em}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#8}}{au}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#3}}{bu}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vtb}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vts}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p'}
+%%  \end{fmfgraph*}
+%% }
+
+%% \newcommand{\penguindecayin}[6]{
+%%   \begin{fmfgraph*}(110,60)
+%%     \fmfipair{Vtb,Vts,b,s,ep,em,p,p',ga,gb,tm,bm}
+%%     \fmfiequ{tm}{.5[nw,ne]}  %tm and bm Nodes defined for convienence
+%%     \fmfiequ{bm}{.5[sw,se]}  %tm and bm are verticies @ top-middle and bottom-middle
+%%     \fmfiequ{.5[Vtb,Vts]}{.7[bm,tm]}  
+%%     \fmfiequ{Vts}{Vtb+(.2w,0)}
+%%     \fmfiequ{b}{.7[sw,nw]}
+%%     \fmfiequ{s}{.7[se,ne]}
+%%     \fmfiequ{ga}{se-(0,.5h)}
+%%     \fmfiequ{gb}{sw-(0,.5h)} 
+%%     \fmfiequ{p'}{bm}
+%%     \fmfiequ{p}{p'+(0,.3h)}
+%%     \fmfiequ{em}{se+(0,.2h)}
+%%    \fmfiequ{ep}{se-(0,.2h)} 
+%%    \fmfi{photon,lab=$W$,
+%%      lab.sid=right}{Vtb--Vts}
+%%    \fmfi{fermion}{b--Vtb}
+%%    \fmfi{fermion}{gb--ga}
+%%    \fmfi{fermion}{Vts--s}
+%%    \fmfi{fermion,lab=$t/c/u$}{Vtb{b-Vtb}
+%%      .. tension 1 .. {right}p}
+%%    \fmfi{fermion,lab=$t/c/u$}{p{right}
+%%      .. tension 1 .. {Vts-s}Vts}
+%%    \fmfi{gluon,label=$g/Z^0/\gamma$ , lab.sid=right }{p--p'}
+%%    \fmfi{fermion}{ep--p'}
+%%    \fmfi{fermion}{p'--em}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#1}}{b}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#3}}{s}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#6}}{ga+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#2}}{gb+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#5}}{ep}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#4}}{em}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vtb}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vts}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p'}
+%%  \end{fmfgraph*}
+%% }
+
+
+%% \newcommand{\penguindecayinplain}[7][70]{
+%%   \begin{fmfgraph*}(110,#1)
+%%     \fmfipair{Vtb,Vts,b,s,ep,em,p,p',ga,gb,tm,bm}
+%%     \fmfiequ{tm}{.5[nw,ne]}  %tm and bm Nodes defined for convienence
+%%     \fmfiequ{bm}{.5[sw,se]}  %tm and bm are verticies @ top-middle and bottom-middle
+%%     \fmfiequ{.5[Vtb,Vts]}{.7[bm,tm]}  
+%%     \fmfiequ{Vts}{Vtb+(.2w,0)}
+%%     \fmfiequ{b}{.7[sw,nw]}
+%%     \fmfiequ{s}{.7[se,ne]}
+%%     \fmfiequ{ga}{se-(0,.5h)}
+%%    \fmfiequ{gb}{sw-(0,.5h)} 
+%%    \fmfiequ{p'}{bm}
+%%    \fmfiequ{p}{p'+(0,.3h)}
+%%    \fmfiequ{em}{se+(0,.2h)}
+%%    \fmfiequ{ep}{se-(0,.2h)} 
+%%    \fmfi{photon,
+%%      lab.sid=right}{Vtb--Vts}
+%%    \fmfi{fermion}{Vtb--b}
+%%    \fmfi{fermion}{gb--ga}
+%%    \fmfi{fermion}{s--Vts}
+%%    \fmfi{fermion}{p{b-Vtb}
+%%      .. tension 1 .. {right}Vtb}
+%%    \fmfi{fermion}{Vts{right}
+%%      .. tension 1 .. {Vts-s}p}
+%%    \fmfi{gluon, lab.sid=right }{p--p'}
+%%    \fmfi{fermion}{ep--p'}
+%%    \fmfi{fermion}{p'--em}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#2}}{b}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#4}}{s}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#7}}{ga+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#3}}{gb+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#5}}{ep+(0,.15h)}
+%%    \fmfiv{d.siz=3thin,lab=\ensuremath{#6}}{em+(0,.15h)}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vtb}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{Vts}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p}
+%%    \fmfiv{d.sh=circle,d.siz=3thin}{p'}
+%%  \end{fmfgraph*}
+%% }

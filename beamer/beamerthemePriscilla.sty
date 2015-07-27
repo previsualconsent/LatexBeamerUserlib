@@ -1,0 +1,69 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/theme/beamerthemePriscilla.sty,v 1.0 2009/12/02 11:00:30 Shervin-Priscilla Exp $
+
+
+\DeclareOptionBeamer{width}
+{\PassOptionsToPackage{width=#1}{beamerouterthemesidebarPriscilla}}
+
+% attenzione questo rende non indipendente la scelta del 2logo o 1logo!
+%% risolto: ora viene passato come parametro a sidebar
+%\DeclareOptionBeamer{hideothersubsections}
+%{\PassOptionsToPackage{hideothersubsections=#1}{beamerouterthemesidebar2logoPriscilla}}
+
+%\DeclareOptionBeamer{hideallsubsections}
+%{\PassOptionsToPackage{hideallsubsections=#1}{beamerouterthemesidebar}}
+
+\ProcessOptionsBeamer
+
+
+
+\mode<presentation>
+
+% anche questo definito nel sorgente
+%\useoutertheme[height=1cm,left]{sidebar2logoPriscilla}
+
+%\usecolortheme{seahorse}
+%\usecolortheme{beaver}   % il colortheme deve essere definito nel sorgente
+%\usecolortheme{wolverine}
+\setbeamercolor*{titlelike}{parent=structure}
+
+
+%\useinnertheme{circles}
+%\setbeamertemplate{frametitle}[default][right]
+%\setbeamertemplate{frametitle}[default][left]
+
+% Copiata dal template di Viviana
+%\pgfdeclaremask{cdf}{./loghi/cdf-logo-mask2}
+%\pgfdeclaremask{d0}{./loghi/infn-logo}
+
+%% \defbeamertemplate*{frametitle}{loghi theme}
+%% {
+%%   \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+%%   \leavevmode%
+%%   \hbox{%
+%%     \hspace{-27pt}
+%% %    \begin{beamercolorbox}[wd=.2\textwidth,ht=1.2cm,sep=0cm,center]{bg}
+%%     \begin{beamercolorbox}[wd=.2\textwidth,ht=1.2cm,sep=0cm,center]{frametitle}
+%%       \pgfimage[height=1.2cm]{./loghi/cdf-logo}
+%%     \end{beamercolorbox}%
+%%     \hspace{-13pt}
+%%     \begin{beamercolorbox}[wd=.8\textwidth,sep=0.35cm,left,rounded=false]{frametitle}
+%%       \usebeamerfont{frametitle}\Large{\insertframetitle}%
+%%     \end{beamercolorbox}%
+%%     \begin{beamercolorbox}[wd=.15\textwidth,sep=0.05cm,center]{bg}
+%%       \pgfimage[height=1cm,width=.14\textwidth]{./loghi/infn-logo}
+%%     \end{beamercolorbox}%
+%%   }%
+%% }
+
+
+\mode
+<all>

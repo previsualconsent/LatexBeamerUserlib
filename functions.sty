@@ -1,0 +1,56 @@
+% custom latex package
+% Author: Shervin Nourbakhsh
+% Co-autor: Priscilla Pani
+% comments:
+%
+%
+\def\fileversion{v0.1f}
+\def\filedate{2011/01/13}
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{functions}
+
+\RequirePackage{mathcommand}
+
+\newcommand{\peak}{x_0}
+%============================== Crystal Ball
+\newcommand{\CBt}{\frac{x-x_{0}}{\sigma}}
+\newcommand{\CBa}{\lp \frac{n}{\alpha} \rp^{n} \cdot e^{-\frac{\alpha^2}{2}}}
+\newcommand{\CBb}{\frac{n}{\alpha} - \alpha}
+
+\newcommand{\CB}{
+%  CB(x) = 
+  \begin{cases}
+    e^{-\frac{1}{2} \lp \frac{x-x_{0}}{\sigma}\rp^{2}} & \CBt > -\alpha \\
+    \CBa \cdot \lp \CBb - \CBt \rp^{-n} & \CBt \leq -\alpha \\
+  \end{cases}
+}
+
+\newcommand{\CBlight}{
+%  CB(x) = 
+  \begin{cases}
+    e^{-\frac{1}{2} \lp \frac{x-x_{0}}{\sigma}\rp^{2}} & \CBt > -\alpha \\
+    A \cdot \lp B - \CBt \rp^{-n} & \CBt \leq -\alpha \\
+  \end{cases}
+}
+
+
+%============================== Cruijff
+\newcommand{\cruijff}{
+  %     f_{s}(x-m) = %N_{sig} \times 
+  exp \left[ 
+    {-\frac{(x-\peak)^2}{2\sigma^2_{L,R} +
+	\alpha_{L,R} (x-\peak)^2}
+    } \right]
+}
+
+%============================== Breit-Wigner
+\newcommand{\BW}{
+  % BW(x) = 
+  \frac{1}{\pi}
+  \frac{ \Gamma }{
+    (x - \peak)^2 + \Gamma^2
+  }
+}
+
+%============================== 

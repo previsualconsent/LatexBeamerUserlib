@@ -1,0 +1,25 @@
+
+\def\fileversion{v0.2f}
+\def\filedate{2010/09/18}
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{feynman}
+%============================================================
+% Define styles for the different kind of edges in a Feynman diagram
+\tikzset{
+    vecbos/.style={decorate, decoration={snake}, draw=black},
+    fermion/.style={draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+    gluon/.style={decorate, draw=black,
+        decoration={coil,amplitude=4pt, segment length=5pt}},
+    fermion_prop/.style={draw=black},% postaction={decorate},
+    antifermion/.style={draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{<}}}},
+    spectators/.style={double, draw=black, postaction={decorate},
+        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+    JPsi/.style={double, draw=black, fill=gray},
+    %        decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+%    vector_boson/.style={decorate,draw=black,
+%      decoration={markings,mark=at position .55 with {\arrow[draw=black]{>}}}},
+}
+

@@ -1,0 +1,71 @@
+% Copyright 2004 by Madhusudan Singh <madhusudan.singh@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemePriscilla.sty,v 1.0 2009/12/02 11:00:30 Shervin-Priscilla Exp $
+
+
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% USER DEFINED
+
+\definecolor{darkmain}{RGB}{100,10,60}
+\definecolor{lightmain}{RGB}{235,199,158}
+%\definecolor{lightmain}{RGB}{255,187,255}
+\definecolor{midmain}{RGB}{255,165,69}
+\definecolor{titlecolor}{named}{darkmain} % colore della prima pagina
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usecolortheme[named=darkmain]{structure}
+
+\setbeamercolor{normal text}{bg=lightmain!35, fg=darkmain!75!black}
+
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=darkmain, bg=lightmain!35}
+\setbeamercolor*{palette primary}{fg=darkmain!60!black,bg=midmain!50!white}
+\setbeamercolor*{palette secondary}{fg=darkmain!70!black,bg=midmain!70} % modifica colore data-pagine
+\setbeamercolor*{palette tertiary}{bg=darkmain!80!black,fg=midmain!10!white}
+\setbeamercolor*{palette quaternary}{fg=darkmain,bg=gray!5!white}
+
+%\setbeamercolor*{sidebar}{fg=darkmain,bg=gray!15!white}
+%\setbeamercolor*{sidebar}{fg=gray!15!white,bg=darkmain}
+\setbeamercolor*{sidebar}{fg=gray!15!white,bg=darkmain,parent=midmain}
+
+\setbeamercolor*{palette sidebar primary}{fg=lightmain}
+\setbeamercolor*{palette sidebar secondary}{fg=lightmain}
+\setbeamercolor*{palette sidebar tertiary}{fg=lightmain}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor{titlelike}{parent=pallette primary,fg=titlecolor}
+\setbeamercolor{frametitle}{bg=darkmain,fg=titlecolor!20} % colore del titolo della slide
+\setbeamercolor{frametitle right}{bg=framemain!20!white}
+%\setbeamercolor{frametitle left}{bg=gray!60!white}
+
+\setbeamercolor*{separation line}{black}
+\setbeamercolor*{fine separation line}{}
+
+
+%% Colori delle scatole
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+%\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+%\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=midmain!50!white}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+%\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+
+\mode
+<all>

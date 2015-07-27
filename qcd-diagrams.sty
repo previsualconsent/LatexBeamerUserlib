@@ -1,0 +1,111 @@
+
+\def\fileversion{v1.0f}
+\def\filedate{2009/12/07}
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{qcd-diagrams}
+
+
+%\begin{comment}
+%ngli output vengono gestiti da sotto a sopra
+% gli input dei comandi si riferiscono ai quark da sopra a sotto e poi 
+% da sinistra a destra.
+%\end{comment}
+
+\newcommand{\sgammajet}{
+  \begin{fmfgraph*}(110,80)
+    \fmfleft{i1,i2} 
+    \fmfright{o1,o2} 
+    \fmf{fermion}{i1,v1} 
+    \fmflabel{\ensuremath{q}}{i1}
+    \fmf{gluon}{v1,i2}	
+    \fmflabel{\ensuremath{g}}{i2}
+    \fmf{fermion}{v2,o1} 
+    \fmflabel{\ensuremath{q}}{o1} 
+    \fmf{photon}{v2,o2} 
+    \fmflabel{\ensuremath{\gamma}}{o2} 
+    \fmf{fermion,label=\ensuremath{q}}{v1,v2}
+  \end{fmfgraph*} 
+}
+
+
+\newcommand{\gammajet}{
+  \begin{fmfgraph*}(110,60) 
+    \fmfleft{i1,i2} 
+    \fmfright{o1,o2} 
+    \fmf{fermion,tension=7}{i1,v1} 
+    \fmflabel{\ensuremath{q}}{i1}
+    \fmf{photon,tension=7}{v1,o1}	
+    \fmflabel{\ensuremath{\gamma}}{o1} 
+    \fmf{gluon,tension=7}{v2,i2} 
+    \fmflabel{\ensuremath{g}}{i2}
+    \fmf{fermion,tension=7}{v2,o2} 
+    \fmflabel{\ensuremath{q}}{o2}
+    \fmf{fermion, label=\ensuremath{q}}{v1,v2} 
+  \end{fmfgraph*} 
+}
+
+
+\newcommand{\schannelgluonquark}{
+  \begin{fmfgraph*}(110,80)
+    \fmfleft{i1,i2} 
+    \fmfright{o1,o2} 
+    \fmf{gluon}{i1,v1} 
+    \fmflabel{\ensuremath{g}}{i1}
+    \fmf{gluon}{v1,i2}	
+    \fmflabel{\ensuremath{g}}{i2}
+    \fmf{fermion}{o1,v2} 
+    \fmflabel{\ensuremath{q}}{o1} 
+    \fmf{fermion}{v2,o2} 
+    \fmflabel{\ensuremath{q}}{o2} 
+    \fmf{gluon,label=\ensuremath{g}}{v1,v2}
+  \end{fmfgraph*} 
+}
+
+\newcommand{\schannelgluongluon}{
+  \begin{fmfgraph*}(110,80)
+    \fmfleft{i1,i2} 
+    \fmfright{o1,o2} 
+    \fmf{gluon}{i1,v1} 
+    \fmflabel{\ensuremath{g}}{i1}
+    \fmf{gluon}{v1,i2}	
+    \fmflabel{\ensuremath{g}}{i2}
+    \fmf{gluon}{o1,v2} 
+    \fmflabel{\ensuremath{g}}{o1} 
+    \fmf{gluon}{v2,o2} 
+    \fmflabel{\ensuremath{g}}{o2} 
+    \fmf{gluon,label=\ensuremath{g}}{v1,v2}
+  \end{fmfgraph*} 
+}
+
+\newcommand{\tchannelgqscattering}{
+  \begin{fmfgraph*}(110,60) 
+    \fmfleft{i1,i2} 
+    \fmfright{o1,o2} 
+    \fmf{fermion,tension=7}{i1,v1} 
+    \fmflabel{\ensuremath{q}}{i1}
+    \fmf{fermion,tension=7}{v1,o1}	
+    \fmflabel{\ensuremath{q}}{o1} 
+    \fmf{gluon,tension=7}{v2,i2} 
+    \fmflabel{\ensuremath{g}}{i2}
+    \fmf{gluon,tension=7}{v2,o2} 
+    \fmflabel{\ensuremath{g}}{o2}
+    \fmf{gluon, label=\ensuremath{g}}{v1,v2} 
+  \end{fmfgraph*} 
+}
+
+\newcommand{\tchannelgqexchange}{
+  \begin{fmfgraph*}(110,60) 
+    \fmfleft{i1,i2} 
+    \fmfright{o1,o2} 
+    \fmf{fermion,tension=7}{i1,v1} 
+    \fmflabel{\ensuremath{q}}{i1}
+    \fmf{gluon,tension=7}{v1,o1}	
+    \fmflabel{\ensuremath{g}}{o1} 
+    \fmf{fermion,tension=7}{v2,o2} 
+    \fmflabel{\ensuremath{q}}{o2}
+    \fmf{gluon,tension=7}{v2,i2} 
+    \fmflabel{\ensuremath{g}}{i2}
+    \fmf{fermion, label=\ensuremath{q}}{v1,v2} 
+  \end{fmfgraph*} 
+}

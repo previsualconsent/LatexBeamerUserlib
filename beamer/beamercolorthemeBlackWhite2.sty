@@ -1,0 +1,24 @@
+% Copyright 2004 by Madhusudan Singh <madhusudan.singh@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemeBlackWhite.sty,v 1.0 2009/12/02 11:00:30 Shervin-Priscilla Exp $
+\RequirePackage{umoline}
+\RequirePackage{beamercolorthemedefault}
+
+\setbeamercolor{alertblock body}{bg=red!20!white fg=blue}
+%\setbeamercolor{block title}{bg=red!30,fg=black}
+\setbeamercolor{block body alerted}{}
+\setbeamercolor{block body example}{}
+\setbeamercolor{block title}{parent=structure}
+\setbeamercolor{block title alerted}{parent=alerted text}
+\setbeamercolor{block title example}{parent=example text}
+
+\setbeamercolor{alerted text}{fg=red!90!black}
+\setbeamertemplate{blocks}[framed]

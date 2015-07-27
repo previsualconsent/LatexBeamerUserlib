@@ -1,0 +1,95 @@
+
+\def\fileversion{v0.1}
+\def\filedate{2011/07/14}
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{eventDisplay}
+%\RequirePackage{}
+
+%============================================================
+
+\newcommand{\drawTrack}[2]{
+      \def\phi0{-90}      % initial angle
+      \def\mass{1}        % mass of the particle
+      \def\charge{#1};     % define positive and negative charge
+      \def\trackPt{#2} ;  %set pt of the track
+      \pgfmathparse{\trackPt/\Bfield}; % calculate the curvature radius
+      \setlength{\curvatureRadius}{\pgfmathresult cm}
+      
+
+
+      % centro del cerchio osculatore
+      \coordinate (center) at ($(PV) + \charge*(0,\curvatureRadius)$);
+      \ifthenelse{\curvatureRadius > \trackerRadius}{
+      \begin{scope}
+        \clip (PV) circle (\trackerRadius);
+	\clip (0,-\trackerRadius) rectangle (\trackerRadius,\trackerRadius);
+	\node (track) [draw, circle through=(PV)] at (center) {};
+      \end{scope}
+
+      }{
+	%      \draw (center) circle (0.01cm);  % lo disegno
+	% definisco la traiettoria circolare 
+	\node (track) [circle through=(PV)] at (center) {};
+     
+      % definisco il punto di intersezione tra la traiettoria e la fine del tracker
+      \coordinate (punto) at (intersection 2 of track and tkCircle);
+
+      % disegno l'arco di circonferenza
+      \draw
+      let \p1 = ($(punto)-(PV)$),
+      \n1 = {atan(\y1/\x1) + 180*(\x1<0)}
+      in 
+      (PV) arc (\phi0:\phi0+\charge * 2* \n1:\charge*\curvatureRadius);
+      };
+}
+
+
+\newcommand{\drawElectron}[2]{
+  % #1 charge
+  % $2 electronPt
+  \drawTrack{#1}{#2};
+  % definisco il punto di intersezione tra la traiettoria e la fine del tracker
+  \coordinate (punto) at (intersection 2 of track and tkCircle);
+ % \draw (punto) circle (5pt);
+  \coordinate (punto1) at ($(punto)+(4 pt,2 pt)$);
+  
+%  \draw (punto) -- (tangent cs:node=track,point={(punto1)});
+  
+ %\draw (punto1) -- ((punto1) -| (
+%  -- ($(punto1) |-  ($); 
+
+  \draw 
+      let \p1 = ($(punto)-(PV)$),
+      \n1 = {atan(\y1/\x1) + 180*(\x1<0)}
+      in
+      [rotate=\n1] (punto) rectangle ($(punto) + 0.5*(#2 pt,3 pt)$);
+}
+
+
+\newcommand{\drawHadron}[2]{
+  % #1 charge
+  % $2 electronPt
+  \drawTrack{#1}{#2};
+  % definisco il punto di intersezione tra la traiettoria e la fine del tracker
+  \coordinate (raw_punto) at (intersection 2 of track and ECALCircle);
+
+  \ifthenelse{\trackPt < 85}{
+    \coordinate (punto) at ($(raw_punto)-\trackPt *(0.0005,0)$);
+  }{
+    \coordinate (punto) at ($(raw_punto)-\trackPt *(0.007,0.0015)$);
+  }
+%  \draw (punto) circle (5pt);
+  \coordinate (punto1) at ($(punto)+(4 pt,2 pt)$);
+  
+%  \draw (punto) -- (tangent cs:node=track,point={(punto1)});
+  
+ %\draw (punto1) -- ((punto1) -| (
+%  -- ($(punto1) |-  ($); 
+
+  \draw 
+      let \p1 = ($(punto)-(PV)$),
+      \n1 = {atan(\y1/\x1) + 180*(\x1<0)}
+      in
+      [rotate=\n1] (punto) rectangle ($(punto) + 0.5*(#2 pt,3 pt)$);
+}

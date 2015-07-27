@@ -1,0 +1,75 @@
+\documentclass[xcolor=svgnames]{beamer}
+%\documentclass[11pt,xcolor=dvipsnames]{/cdf/home/ppani/programs/latex-beamer-3.07/base/beamer}
+%\usepackage{beamerthemesplit}
+
+%====== packages ==============================================================
+%\usepackage{verbatim} % per il comando comment
+\usepackage{epic, eepic}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{latexsym}  % per il simbolo \Diamond in eepic
+\usepackage{amsfonts}
+%\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{subfigure}
+\usepackage{array} %per tabella contenente img e testo
+%\usepackage[italian]{babel}   % serve per la sillabazione
+% momentaneamente nei debian babel va in conflitto con helvetica di prosper
+%\usepackage{pstricks,pst-node,pst-text,pst-3d} % per linee e disegni
+%                                           \rnode{name}{text} \rput \nccurve
+\usepackage{cancel} % to use \cancel for MET
+\usepackage{feynmf}
+\renewcommand{\insertlogo}{\scalebox{0.35}{\includegraphics{./loghi/infn-logo}}}
+
+
+%------ styles ----------------------------------------------------------------
+\useoutertheme{infolines} % it must come before \usetheme !!
+\usetheme[sidebarshades,numbering, totalnumber, hideothersubsections]{Hannover}
+%\usetheme[sidebarshades, totalnumber, hideothersubsections]{}
+\setbeamertemplate{navigation symbols}{} 
+%\setbeamertemplate{background canvas}[vertical shading][]
+\setbeamercolor{normal text}{bg=yellow!20}
+%\definecolor{darkred}{named}{red!15!black}
+% make this darker
+\usecolortheme[named=Maroon]{structure}
+%\usefonttheme{structuresmallcapsserif}
+%\usefonttheme{professionalfonts}
+
+%====== new commands ==========================================================
+%\usepackage{mathcommand}
+
+%\input{./tex/diagrammi.tex}
+\newcommand{\met}{\ensuremath{\mathrm{\cancel{E}_T}}}
+
+
+\title{Summer Student Program}
+\author{Priscilla Pani }
+\date{09/23/09}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{fmffile}{feyn-diagram}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Introduction}
+
+\footnotesize
+\subsection{Search for Diboson Production}
+%% ------------------------------------------
+\begin{frame}[t]
+  \frametitle{Search for WW/WZ in l$\nu$ + jets }
+ciao
+
+\end{frame}
+
+\subsection{features of the measurement}
+%% --------------------------------------------------------
+
+\end{fmffile}
+
+\end{document}

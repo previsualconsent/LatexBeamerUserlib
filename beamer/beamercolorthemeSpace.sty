@@ -1,0 +1,81 @@
+% Copyright 2004 by Madhusudan Singh <madhusudan.singh@gmail.com>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemeSpace.sty,v 1.1 2010/01/03 17:00:30 Priscilla Exp $
+
+
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% USER DEFINED
+%%%%%%%%%%%%%%%%%%%%%%
+
+% definisce il colore della barralaterale e della structure
+\definecolor{darkmain}{named}{black}
+% definisce il frame del titolo e la barra sotto
+\definecolor{midmain}{rgb}{.17, .31, .80}%.133 .133 .75}
+% definisce il background e le cose chiare
+%\definecolor{lightmain}{rgb}{.76 .937 1}
+\definecolor{lightmain}{named}{white}
+
+% modifica il colore del titolo e ora anche il testo
+\definecolor{titlecolor}{named}{white}
+%\definecolor{titlecolor}{named}{yellow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usecolortheme[named=yellow]{structure}
+
+\setbeamercolor{normal text}{bg=lightmain!35, fg=titlecolor}
+
+\setbeamertemplate{background canvas}{\includegraphics
+	[width=\paperwidth,height=\paperheight]{./sfondo/sfondo}}%\insertsfondo}}
+
+
+\setbeamercolor{section in toc}{fg=lightmain,bg=darkmain}
+\setbeamercolor{alerted text}{fg=darkmain!80!gray, bg=lightmain!35}
+\setbeamercolor*{palette primary}{fg=darkmain!60!black,bg=midmain!50!white}
+\setbeamercolor*{palette secondary}{fg=darkmain!70!black,bg=midmain}%!70!white}%!15!white}
+\setbeamercolor*{palette tertiary}{bg=darkmain!80!black,fg=midmain!10!white}
+\setbeamercolor*{palette quaternary}{fg=darkmain,bg=gray!5!white}
+
+% modificato solo per shervin per fare la barra laterale un po' piu' scura
+%\setbeamercolor*{sidebar}{fg=gray!15!white,bg=darkmain!75!black,parent=midmain}
+\setbeamercolor*{sidebar}{fg=gray!15!white,bg=darkmain,parent=midmain}
+
+\setbeamercolor*{palette sidebar primary}{fg=lightmain}
+\setbeamercolor*{palette sidebar secondary}{fg=lightmain}
+\setbeamercolor*{palette sidebar tertiary}{fg=lightmain}
+\setbeamercolor*{palette sidebar quaternary}{fg=white}
+
+%\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor{titlelike}{parent=pallette primary,fg=titlecolor}%darkmain}
+\setbeamercolor{frametitle}{bg=midmain,fg=lightmain}%!35!white,fg=darkmain}%darkmain!25!orange!}
+\setbeamercolor{frametitle right}{bg=framemain!20!white}%gray!60!white}
+%\setbeamercolor{frametitle left}{bg=gray!60!white}
+
+\setbeamercolor*{separation line}{black}
+\setbeamercolor*{fine separation line}{}
+
+
+%% Colori delle scatole
+\setbeamercolor{block title}{use=structure,fg=white,bg=midmain!65!black}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!75!black}
+%\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!75!black}
+
+%\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=midmain!50!white, fg=black}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+%\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+
+\mode
+<all>

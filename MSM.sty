@@ -1,0 +1,72 @@
+
+\def\fileversion{v0.1}
+\def\filedate{2009/12/07}
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{MSM}
+\RequirePackage{mathcommand}
+%\usepackage{mathcommand}
+%============================================================
+
+
+
+% PDG pag. 125 July 2008
+\renewcommand{\Ell}{\ensuremath{\mathcal{L}}}  % L della lagrangiana
+\newcommand{\psibar}{\bar{\psi}}  % doublet
+
+\newcommand{\meson}[2]{\ensuremath{
+    \begin{pmatrix}
+      \overline #1 \\
+      #2 \\
+    \end{pmatrix}
+}}
+\newcommand{\doublet}[2]{\ensuremath{
+    \begin{pmatrix}
+      #1 \\
+      #2 \\
+    \end{pmatrix}
+}}
+
+
+\newcommand{\FermionFreeFieldMSM}{\ensuremath{
+  \sum_{i}^{family} \psibar_i (\imath \dslash - m) \psi_i
+  }
+}
+
+\newcommand{\FermionHiggsCouplingMSM}{\ensuremath{
+  - g \sum_{i}^{family} \psibar_i \frac{m_i H}{2 M_W} \psi_i
+  }
+}
+
+\newcommand{\FermionChargedCurrentMSM}{\ensuremath{
+    - \frac{g}{2\sqrt{2}} 
+    \sum_{i}^{family} \psibar_{i} 
+    \gamma^{\mu}(1 - \gamma_{5}) (T^{+}W^{+}_{\mu} + T^{-}W^{-}_{\mu}) 
+    \psi_{i}
+  }
+}
+
+\newcommand{\FermionEMCurrentMSM}{\ensuremath{
+    - e \sum_{i}^{family} 
+    q_{i} \psibar_{i} \gamma^{\mu} \psi_{i} A^{\mu}
+  }
+}
+
+\newcommand{\FermionNeutralCurrentMSM}{\ensuremath{
+    - \frac{g}{2\cos\theta_{W}} \sum_{i}^{family}
+    \psibar_{i} \gamma^{\mu} (g^{i}_{V} - g^{i}_{A} \gamma_5) \psi_{i} Z_{\mu}
+  }
+}
+
+%\newcommand{\FermionFreeFieldMSM}{}
+
+\newcommand{\LagrangianMSM}{%\ensuremath{
+    \begin{gather*}
+      \FermionFreeFieldMSM
+      \FermionHiggsCouplingMSM  \\
+      \FermionChargedCurrentMSM \\
+      \FermionEMCurrentMSM      \\ 
+      \FermionNeutralCurrentMSM \\
+    \end{gather*}
+    %}
+}
